@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, after_this_request
+from flask import Flask, request, send_file, after_this_request, render_template
 import fastf1
 import os
 import tempfile
@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hello, World!'
+    return render_template('index.html')
 
 @app.route('/get_session_data/<int:year>/<event>/<session>/<driver>', methods=['GET'])
 def get_session_data(year, event, session, driver):

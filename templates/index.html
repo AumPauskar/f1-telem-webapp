@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Page</title>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var year = document.getElementById('year').value;
+            var venue = document.getElementById('venue').value;
+            var session = document.getElementById('session').value;
+            var driver = document.getElementById('driver').value;
+            var actionUrl = '/get_session_data/' + year + '/' + venue + '/' + session + '/' + driver;
+            window.location.href = actionUrl;
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to our Flask application!</h1>
+    <form onsubmit="submitForm(event)">
+        <label for="year">Year:</label><br>
+        <input type="text" id="year" name="year"><br>
+        <label for="venue">Venue:</label><br>
+        <input type="text" id="venue" name="venue"><br>
+        <label for="session">Session:</label><br>
+        <input type="text" id="session" name="session"><br>
+        <label for="driver">Driver:</label><br>
+        <input type="text" id="driver" name="driver"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
