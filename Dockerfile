@@ -14,4 +14,4 @@ COPY static /static
 
 # final configuration
 EXPOSE 5000
-CMD ["gunicorn", "-b", ":5000", "app:app"]
+CMD ["gunicorn", "-b", ":5000", "--timeout", "180", "app:app"]
