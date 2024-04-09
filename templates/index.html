@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-100">
 <head>
+    <meta charset="UTF-8">
     <title>Welcome Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function submitForm(event) {
             event.preventDefault();
@@ -14,19 +16,31 @@
         }
     </script>
 </head>
-<body>
-    <h1>Welcome to our Flask application!</h1>
-    <img src="{{ url_for('static', filename='img/2024_aus.jpg') }}" alt="Image 1">
-    <form onsubmit="submitForm(event)">
-        <label for="year">Year:</label><br>
-        <input type="text" id="year" name="year"><br>
-        <label for="venue">Venue:</label><br>
-        <input type="text" id="venue" name="venue"><br>
-        <label for="session">Session:</label><br>
-        <input type="text" id="session" name="session"><br>
-        <label for="driver">Driver:</label><br>
-        <input type="text" id="driver" name="driver"><br>
-        <input type="submit" value="Submit">
-    </form>
+<body class="h-full">
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <h1 class="mb-8 text-4xl font-bold text-gray-800">Welcome to our Flask application!</h1>
+        <img class="mb-8 rounded-lg shadow-lg max-h-full object-contain" src="{{ url_for('static', filename='img/2024_aus.jpg') }}" alt="Image 1">
+        <form class="w-full max-w-md" onsubmit="submitForm(event)">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="year">Year:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="year" name="year">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="venue">Venue:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="venue" name="venue">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="session">Session:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="session" name="session">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2" for="driver">Driver:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="driver" name="driver">
+            </div>
+            <div class="flex items-center justify-center">
+                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
