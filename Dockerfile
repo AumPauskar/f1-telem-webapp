@@ -9,6 +9,7 @@ RUN pip install fastf1
 # install app
 COPY app.py /
 COPY templates /templates
+COPY static /static
 
 # final configuration
 EXPOSE 5000
