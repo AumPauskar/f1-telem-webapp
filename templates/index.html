@@ -1,58 +1,85 @@
 <!DOCTYPE html>
 <html class="h-full bg-gray-100">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Welcome Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        function submitForm(event) {
-            event.preventDefault();
-            var year = document.getElementById('year').value;
-            var venue = document.getElementById('venue').value;
-            var session = document.getElementById('session').value;
-            var driver = document.getElementById('driver').value;
-            var actionUrl = '/get_session_data/' + year + '/' + venue + '/' + session + '/' + driver;
-            window.location.href = actionUrl;
-        }
+      function submitForm(event) {
+        event.preventDefault();
+        var year = document.getElementById('year').value;
+        var venue = document.getElementById('venue').value;
+        var session = document.getElementById('session').value;
+        var driver = document.getElementById('driver').value;
+        var actionUrl = '/get_session_data/' + year + '/' + venue + '/' + session + '/' + driver;
+        window.location.href = actionUrl;
+      }
     </script>
-</head>
-<body class="h-full">
-    <div class="flex flex-col items-center justify-center min-h-screen">
-        <h1 class="mb-8 text-4xl font-bold text-gray-800">Welcome to our Flask application!</h1>
-        <img class="mb-8 rounded-lg shadow-lg max-h-full object-contain" src="{{ url_for('static', filename='img/2024_aus.jpg') }}" alt="Image 1">
-        <form class="w-full max-w-md" onsubmit="submitForm(event)">
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="year">Year:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="year" name="year">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="venue">Venue:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="venue" name="venue">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="session">Session:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="session" name="session">
-            </div>
-            <div class="mb-6">
-                <label class="block text-gray-700 font-bold mb-2" for="driver">Driver:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="driver" name="driver">
-            </div>
-            <div class="flex items-center justify-center">
-                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Submit">
-            </div>
-        </form>
-    </div>
-
-    <!-- instructions for the end user -->
-    <div class="flex items-center justify-center mt-6">
-        <div class="text-gray-700">
-            <p class="font-bold">Instructions:</p>
-            <ul class="list-disc list-inside">
-                <li>Venue may be entered corresponding to the actual event name (e.g., "Japanese" for Japanese GP, "Australian" for Australian GP).</li>
-                <li>Session: Arguments 1, 2, 3, Q, R for FP1, FP2, FP3, Quali and Race respectively.</li>
-                <li>Driver: Shorthand for driver names. VER for Verstappen, LEC for Leclerc etc...</li>
-            </ul>
+  </head>
+  <body class="h-full">
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="mb-8 text-4xl font-bold text-gray-800 text-center">Get F1 telemetry</h1>
+      <img
+        class="mb-8 rounded-lg shadow-lg w-full max-w-lg mx-auto"
+        src="{{ url_for('static', filename='img/2024_aus.jpg') }}"
+        alt="Image 1"
+      />
+      <form class="w-full md:max-w-md mx-auto" onsubmit="submitForm(event)">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="year">Year:</label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            id="year"
+            name="year"
+          />
         </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="venue">Venue:</label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            id="venue"
+            name="venue"
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="session">Session:</label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            id="session"
+            name="session"
+          />
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 font-bold mb-2" for="driver">Driver:</label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            id="driver"
+            name="driver"
+          />
+        </div>
+        <div class="flex items-center justify-center">
+          <input
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+      </form>
     </div>
-</body>
+    <!-- instructions for the end user -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="text-gray-700">
+        <p class="font-bold">Instructions:</p>
+        <ul class="list-disc list-inside">
+          <li>Venue may be entered corresponding to the actual event name (e.g., "Japanese" for Japanese GP, "Australian" for Australian GP).</li>
+          <li>Session: Arguments 1, 2, 3, Q, R for FP1, FP2, FP3, Quali and Race respectively.</li>
+          <li>Driver: Shorthand for driver names. VER for Verstappen, LEC for Leclerc etc...</li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
