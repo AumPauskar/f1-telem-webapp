@@ -3,9 +3,9 @@ FROM ubuntu:22.04
 
 # install app dependencies
 RUN apt-get update && apt-get install -y python3 python3-pip
-RUN pip install flask==3.0.*
-RUN pip install fastf1
-RUN pip install gunicorn
+RUN pip3 install flask==3.0.*
+RUN pip3 install fastf1
+RUN pip3 install gunicorn
 
 # install app
 COPY app.py /
